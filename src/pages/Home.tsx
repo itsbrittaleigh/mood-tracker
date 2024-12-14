@@ -5,26 +5,7 @@ import { useForm } from 'react-hook-form';
 import { moodLocalStorageToken } from '../consts';
 import { MoodHistoryItem } from '../types';
 import styled from 'styled-components';
-
-const ButtonContainer = styled.div`
-  position: fixed;
-  width: 100vw;
-  bottom: 0;
-  background-color: white;
-  display: flex;
-  padding: 1rem;
-  justify-content: flex-end;
-  border-top: 1px solid var(--gray);
-`;
-
-const Button = styled.button`
-  padding: 1rem 1.5rem;
-  background-color: var(--accent);
-  border-radius: 3px;
-  color: white;
-  outline: none;
-  border-width: 0px;
-`;
+import { Button, ButtonContainer } from '../styles/Button';
 
 const Checkboxes = styled.div`
   display: grid;

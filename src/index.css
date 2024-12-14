@@ -1,8 +1,9 @@
 :root {
   --black: #222725;
-  --accent: #166088;
-  --gray: #e3e8e6;
-  --dark-gray: #bac0be;
+  --accent: #1F7A8C;
+  --danger: #DB222A;
+  --gray: #E3E8E6;
+  --dark-gray: #BAC0BE;
 }
 
 *,

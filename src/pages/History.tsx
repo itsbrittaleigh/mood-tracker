@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import Header from '../components/Header';
 import { moodLocalStorageToken } from '../consts';
+import { Button, ButtonContainer } from '../styles/Button';
 import { MoodHistoryItem } from '../types';
 
 const History = () => {
-  const historyItems = localStorage.getItem(moodLocalStorageToken);
+  const [historyItems, setHistoryItems] = useState(localStorage.getItem(moodLocalStorageToken));
   const parsedItems = JSON.parse(historyItems ?? '""');
   const moodHistory: MoodHistoryItem[] = parsedItems.moodHistory ?? [];
 
@@ -29,8 +31,16 @@ const History = () => {
           </li>
         ))}
       </ul>
+      <ButtonContainer>
+        <Button $destructive onClick={clearHistory}>Clear history</Button>
+      </ButtonContainer>
     </>
   );
+
+  function clearHistory() {
+    localStorage.removeItem(moodLocalStorageToken);
+    setHistoryItems(localStorage.getItem(moodLocalStorageToken));
+  }
 };
 
 export default History;
