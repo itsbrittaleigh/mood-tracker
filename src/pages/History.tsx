@@ -31,7 +31,7 @@ const ContentContainer = styled.div`
 `;
 
 const History = () => {
-  const [activeTab, setActiveTab] = useState<'list' | 'graph'>('graph');
+  const [activeTab, setActiveTab] = useState<'list' | 'graph'>('list');
   const [historyItems, setHistoryItems] = useState(localStorage.getItem(moodLocalStorageToken));
   const parsedItems = JSON.parse(historyItems ?? '""');
   const moodHistory: MoodHistoryItem[] = parsedItems.moodHistory ?? [];
