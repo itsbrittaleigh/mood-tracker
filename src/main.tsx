@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router';
 import Home from './pages/Home';
 import History from './pages/History';
+import './index.css';
 
 const root = document.getElementById('root');
 createRoot(root!).render(

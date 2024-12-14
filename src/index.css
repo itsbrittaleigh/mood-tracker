@@ -1,0 +1,22 @@
+:root {
+  --black: #222725;
+  --accent: #166088;
+  --gray: #e3e8e6;
+  --dark-gray: #bac0be;
+}
+
+*,
+*::after,
+*::before,
+input,
+button {
+  color: var(--black);
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
