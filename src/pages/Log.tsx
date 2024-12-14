@@ -37,7 +37,7 @@ interface MoodForm {
   moods: string[];
 }
 
-const Home = () => {
+const Log = () => {
   const { register, handleSubmit, reset } = useForm<MoodForm>();
 
   return (
@@ -98,4 +98,4 @@ const Home = () => {
   }
 };
 
-export default Home;
+export default Log;

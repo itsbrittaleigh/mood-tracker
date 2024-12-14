@@ -20,7 +20,7 @@ const NavItem = styled(NavLink)`
 const Header = () => (
   <header>
     <NavMenu>
-      <NavItem to="/">Home</NavItem>
+      <NavItem to="/">Log mood</NavItem>
       <NavItem to="/history">History</NavItem>
     </NavMenu>
   </header>
