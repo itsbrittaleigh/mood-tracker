@@ -45,6 +45,8 @@ const GraphView = ({ moodHistory }: GraphViewProps) => {
     ],
   };
 
+  if (data.length === 0) return <p>No history.</p>
+
   return (
     <Line
       data={chartData}
