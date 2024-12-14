@@ -1,1 +1,1 @@
-export const localStorageToken = 'moodHistory';
+export const moodLocalStorageToken = 'mood';

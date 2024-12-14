@@ -2,7 +2,7 @@ import { BaseSyntheticEvent } from 'react';
 import Header from '../components/Header';
 import { moods } from '../data/moods';
 import { useForm } from 'react-hook-form';
-import { localStorageToken } from '../consts';
+import { moodLocalStorageToken } from '../consts';
 import { MoodHistoryItem } from '../types';
 
 interface MoodForm {
@@ -35,7 +35,7 @@ const Home = () => {
 
   function submitForm(data: MoodForm, event?: BaseSyntheticEvent) {
     event?.preventDefault();
-    const moodHistory = localStorage.getItem(localStorageToken);
+    const moodHistory = localStorage.getItem(moodLocalStorageToken);
     
     const now = new Date();
     const historyItem: MoodHistoryItem = {
@@ -48,18 +48,18 @@ const Home = () => {
       if(Array.isArray(parsedHistory)) {
         parsedHistory.push(historyItem);
         localStorage.setItem(
-          localStorageToken, 
+          moodLocalStorageToken, 
           JSON.stringify({ moodHistory: parsedHistory })
         );
       } else {
         localStorage.setItem(
-          localStorageToken, 
+          moodLocalStorageToken, 
           JSON.stringify({ moodHistory: [historyItem] })
         );
       }
     } else {
       localStorage.setItem(
-        localStorageToken, 
+        moodLocalStorageToken, 
         JSON.stringify({ moodHistory: [historyItem] })
       );
     }

@@ -1,9 +1,9 @@
 import Header from '../components/Header';
-import { localStorageToken } from '../consts';
+import { moodLocalStorageToken } from '../consts';
 import { MoodHistoryItem } from '../types';
 
 const History = () => {
-  const historyItems = localStorage.getItem(localStorageToken);
+  const historyItems = localStorage.getItem(moodLocalStorageToken);
   const parsedItems = JSON.parse(historyItems ?? '""');
   const moodHistory: MoodHistoryItem[] = parsedItems.moodHistory ?? [];
 
