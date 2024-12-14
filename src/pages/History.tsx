@@ -12,8 +12,20 @@ const History = () => {
       <Header />
       <ul>
         {moodHistory.map(({ datetime, moods }) => (
-          <li key={datetime.toLocaleString()}>
-            {datetime.toLocaleString()}: {moods.join(', ')}
+          <li key={datetime.toString()}>
+            <strong>
+              {new Date(datetime).toLocaleDateString(undefined, {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })} {new Date(datetime).toLocaleTimeString(undefined, {
+                hour: 'numeric', 
+                minute: '2-digit', 
+                hour12: true 
+              })}  
+            </strong>
+            : {moods.join(', ')}
           </li>
         ))}
       </ul>
