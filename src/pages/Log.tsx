@@ -48,7 +48,7 @@ const Log = () => {
           {moods.map(({ name }) => (
             <CheckboxContainer key={name.toLocaleLowerCase()}>
               <Checkbox
-                {...register('moods')}
+                {...register('moods', { required: true })}
                 type="checkbox"
                 value={name.toLocaleLowerCase()}
               />
