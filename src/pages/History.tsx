@@ -5,6 +5,7 @@ import { Button, ButtonContainer } from '../styles/Button';
 import { MoodHistoryItem } from '../types';
 import styled from 'styled-components';
 import ListView from './ListView';
+import GraphView from './GraphView';
 
 const Tabs = styled.div`
   display: inline-flex;
@@ -30,7 +31,7 @@ const ContentContainer = styled.div`
 `;
 
 const History = () => {
-  const [activeTab, setActiveTab] = useState<'list' | 'graph'>('list');
+  const [activeTab, setActiveTab] = useState<'list' | 'graph'>('graph');
   const [historyItems, setHistoryItems] = useState(localStorage.getItem(moodLocalStorageToken));
   const parsedItems = JSON.parse(historyItems ?? '""');
   const moodHistory: MoodHistoryItem[] = parsedItems.moodHistory ?? [];
@@ -56,7 +57,7 @@ const History = () => {
         {activeTab === 'list' ? (
           <ListView moodHistory={moodHistory} />
         ) : (
-          <p>Coming soon.</p>
+          <GraphView moodHistory={moodHistory} />
         )}
       </ContentContainer>
       <ButtonContainer>

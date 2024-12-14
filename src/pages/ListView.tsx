@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { MoodHistoryItem } from '../types';
+import { getDate, getTime } from '../utils';
 
 const List = styled.ul`
   padding: 0 14px;
@@ -17,16 +18,7 @@ const ListView = ({ moodHistory }: ListViewProps) => {
       {moodHistory.map(({ datetime, moods }) => (
         <li key={datetime.toString()}>
           <strong>
-            {new Date(datetime).toLocaleDateString(undefined, {
-              weekday: 'long',
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })} {new Date(datetime).toLocaleTimeString(undefined, {
-              hour: 'numeric', 
-              minute: '2-digit', 
-              hour12: true 
-            })}  
+            {getDate(datetime)} {getTime(datetime)}  
           </strong>
           : {moods.join(', ')}
         </li>
