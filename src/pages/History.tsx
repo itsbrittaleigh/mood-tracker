@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Header from '../components/Header';
-import { moodLocalStorageToken } from '../consts';
+import { moodLocalStorageArchivedToken, moodLocalStorageToken } from '../consts';
 import { Button, ButtonContainer } from '../styles/Button';
 import { MoodHistoryItem } from '../types';
 import styled from 'styled-components';
@@ -33,8 +33,11 @@ const ContentContainer = styled.div`
 const History = () => {
   const [activeTab, setActiveTab] = useState<'list' | 'graph'>('list');
   const [historyItems, setHistoryItems] = useState(localStorage.getItem(moodLocalStorageToken));
+  const [archivedItems, setArchivedItems] = useState(localStorage.getItem(moodLocalStorageArchivedToken));
   const parsedItems = JSON.parse(historyItems ?? '""');
+  const parsedArchivedItems = JSON.parse(archivedItems ?? '""');
   const moodHistory: MoodHistoryItem[] = parsedItems.moodHistory ?? [];
+  const archivedMoodHistory: MoodHistoryItem[] = parsedArchivedItems.moodHistory ?? [];
 
   return (
     <>
@@ -55,12 +58,19 @@ const History = () => {
       </Tabs>
       <ContentContainer>
         {activeTab === 'list' ? (
-          <ListView moodHistory={moodHistory} />
+          <ListView
+            moodHistory={moodHistory}
+            archivedMoodHistory={archivedMoodHistory}
+          />
         ) : (
-          <GraphView moodHistory={moodHistory} />
+          <GraphView
+            moodHistory={moodHistory}
+            archivedMoodHistory={archivedMoodHistory}
+          />
         )}
       </ContentContainer>
       <ButtonContainer>
+        <Button $destructive $ghost onClick={archiveHistory}>Archive history</Button>
         <Button $destructive onClick={clearHistory}>Clear history</Button>
       </ButtonContainer>
     </>
@@ -69,6 +79,13 @@ const History = () => {
   function clearHistory() {
     localStorage.removeItem(moodLocalStorageToken);
     setHistoryItems(localStorage.getItem(moodLocalStorageToken));
+  }
+
+  function archiveHistory() {
+    const itemsToArchive = moodHistory.concat(archivedMoodHistory);
+    localStorage.setItem(moodLocalStorageArchivedToken, JSON.stringify({ moodHistory: itemsToArchive }));
+    clearHistory();
+    setArchivedItems(localStorage.getItem(moodLocalStorageArchivedToken));
   }
 };
 

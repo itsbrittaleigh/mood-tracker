@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
-export const Button = styled.button<{ $destructive?: boolean; }>`
+export const Button = styled.button<{ $destructive?: boolean; $ghost?: boolean; }>`
   padding: 1rem 1.5rem;
-  background-color: ${props => props.$destructive ? "var(--danger)" : "var(--accent)"};
+  background-color: ${props => props.$ghost ? 'transparent' : props.$destructive ? "var(--danger)" : "var(--accent)"};
+  border-color: ${props => props.$destructive ? "var(--danger)" : "var(--accent)"};
   border-radius: 3px;
-  color: white;
+  color: ${props => !props.$ghost ? 'white' : props.$destructive ? "var(--danger)" : "var(--accent)"};
   outline: none;
-  border-width: 0px;
+  border-width: 2px;
+  border-style: solid;
 `;
 
 export const ButtonContainer = styled.div`
@@ -18,4 +20,5 @@ export const ButtonContainer = styled.div`
   padding: 1rem;
   justify-content: flex-end;
   border-top: 1px solid var(--gray);
+  gap: 0.5rem;
 `;

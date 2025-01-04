@@ -8,3 +8,5 @@ export interface TransformedHistory {
     [datetime: string]: string[];
   };
 };
+
+export type HistoryPageTab = 'list' | 'graph';
